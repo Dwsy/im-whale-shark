@@ -17,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * @author BanTanger 半糖
@@ -24,9 +26,12 @@ import java.net.UnknownHostException;
  */
 public class Starter {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         if (args.length > 0) {
             start(args[0]);
+        } else {
+            String path = Objects.requireNonNull(Starter.class.getClassLoader().getResource("config.yml")).getPath();
+            start(path);
         }
     }
 
@@ -58,6 +63,7 @@ public class Starter {
 
     /**
      * 对于每一个 IP 地址，都开启一个线程去启动 Zk
+     *
      * @param config
      * @throws UnknownHostException
      */

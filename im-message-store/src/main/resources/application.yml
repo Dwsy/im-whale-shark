@@ -5,13 +5,13 @@ spring:
   profiles:
     active: dev
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/im_core?serverTimezone=UTC&useSSL=false&characterEncoding=UTF8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/im_core?serverTimezone=UTC&useSSL=false&characterEncoding=UTF8
     username: root
+    password: root
 
   redis:
-    host: 127.0.0.1
+    host: local-redis
     port: 6379
     jedis:
       pool:
@@ -21,9 +21,9 @@ spring:
         min-idle: 10
     password:
   rabbitmq:
-    host: localhost
+    host: local-rabbitmq
     port: 5672
-    addresses: localhost
+    addresses: local-rabbitmq
     username: admin
     password: admin
     #    virtual-host:
