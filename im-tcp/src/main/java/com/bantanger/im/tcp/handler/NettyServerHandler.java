@@ -49,8 +49,8 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<Message> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
         Integer command = parseCommand(msg);
-        CommandFactory commandFactory = CommandFactory.getInstance();
-        CommandStrategy commandStrategy = commandFactory.getCommandStrategy(command);
+        CommandFactory commandFactory = CommandFactory.getInstance();//静态内部类单例
+        CommandStrategy commandStrategy = commandFactory.getCommandStrategy(command);//策略
 
         CommandExecution commandExecution = null;
         try {
